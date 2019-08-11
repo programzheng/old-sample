@@ -1,13 +1,27 @@
 <template>
-  <q-page class="flex flex-center">
-  <div class="q-pa-xs">
-    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-    <div class="row">
-      <div class="col col-xs-12"><q-input standout="bg-primary text-white" v-model="account" label="帳號" ref="account" @keyup.enter="$refs.password.focus()" /></div>
-      <div class="col col-xs-12"><q-input standout="bg-primary text-white" v-model="password" label="密碼" ref="password" @keyup.enter="doSubmit" /></div>
-      <div class="col col-xs-4 offset-xs-8"><q-btn class="full-width" color="black" label="送出" ref="submit" @click="doSubmit" /></div>
-    </div>
-  </div>
+  <q-page class="flex flex-center bg-primary">
+    <q-card class="bg-grey-10 text-white">
+      <q-card-section>
+        <div class="text-h6 text-center text-white">登入</div>
+      </q-card-section>
+      <div class="q-pa-md">
+        <q-form
+          @submit="doSubmit"
+        >
+            <div class="row">
+              <div class="col col-xs-10 offset-xs-1">
+                <q-input dark standout v-model="account" label="帳號" ref="account" :rules="[ val => val && val.length > 0 || '必填']" />
+              </div>
+              <div class="col col-xs-10 offset-xs-1">
+                <q-input dark standout v-model="password" label="密碼" ref="password" :rules="[ val => val && val.length > 0 || '必填']" />
+              </div>
+              <div class="col col-xs-10 offset-xs-1">
+                <q-btn class="bg-primary text-white full-width" label="登入" type="submit" />
+              </div>
+            </div>
+        </q-form>
+      </div>
+    </q-card>
   </q-page>
 </template>
 
@@ -25,7 +39,8 @@ export default {
   },
   methods: {
     doSubmit () {
-
+      console.log('test')
+      // console.log($store)
     }
   }
 }
