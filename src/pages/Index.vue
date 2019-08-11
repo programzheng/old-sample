@@ -39,8 +39,18 @@ export default {
   },
   methods: {
     doSubmit () {
-      console.log('test')
-      // console.log($store)
+      let self = this
+      this.$axios({
+        method: 'post',
+        url: '/login',
+        data: {
+          account: self.account,
+          password: self.password
+        }
+      })
+        .then(function (response) {
+          console.log(response)
+        })
     }
   }
 }
