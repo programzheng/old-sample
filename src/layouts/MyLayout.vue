@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated v-if="header">
       <q-toolbar>
         <q-btn
           flat
@@ -97,7 +97,8 @@ export default {
   name: 'MyLayout',
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+      header: false,
+      leftDrawerOpen: false
     }
   },
   methods: {
