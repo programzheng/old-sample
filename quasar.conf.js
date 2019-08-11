@@ -45,7 +45,9 @@ module.exports = function (ctx) {
         'QList',
         'QItem',
         'QItemSection',
-        'QItemLabel'
+        'QItemLabel',
+        'QInput',
+        'QBtn'
       ],
 
       directives: [
@@ -77,12 +79,15 @@ module.exports = function (ctx) {
             formatter: require('eslint').CLIEngine.getFormatter('stylish')
           }
         })
+      },
+      env: {
+        API: JSON.stringify(process.env.API)
       }
     },
 
     devServer: {
       // https: true,
-      // port: 8080,
+      port: 3000,
       open: true // opens browser window automatically
     },
 

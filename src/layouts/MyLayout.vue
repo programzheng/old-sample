@@ -1,8 +1,8 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated v-if="header">
+    <q-header elevated>
       <q-toolbar>
-        <q-btn
+        <q-btn v-if="toolbarButton"
           flat
           dense
           round
@@ -97,7 +97,7 @@ export default {
   name: 'MyLayout',
   data () {
     return {
-      header: false,
+      toolbarButton: false,
       leftDrawerOpen: false
     }
   },
