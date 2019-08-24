@@ -25,6 +25,7 @@ export default async ({ Vue }) => {
       Notify.create(response.data.Result.Error)
       return new Promise(() => {})
     }
+    return response
   })
   Vue.prototype.$axios = instance
 }
