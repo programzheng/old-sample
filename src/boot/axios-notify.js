@@ -1,6 +1,6 @@
 import axios from 'axios'
-// quasar toast
-import { Notify } from 'quasar'
+// quasar plugins
+import { Notify, Cookies } from 'quasar'
 
 export default async ({ Vue }) => {
   Notify.setDefaults({
@@ -15,8 +15,9 @@ export default async ({ Vue }) => {
     baseURL: process.env.API,
     timeout: 1000,
     headers: {
-      'accept': 'application/json',
-      'content-type': 'application/json'
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${Cookies.get('token')}`
     }
   })
   // response handler

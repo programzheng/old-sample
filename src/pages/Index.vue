@@ -42,14 +42,18 @@ export default {
       let self = this
       this.$axios({
         method: 'post',
-        url: '/login',
+        url: 'admin/login',
         data: {
           account: self.account,
           password: self.password
         }
       })
-        .then(function (response) {
-          console.log(response)
+        .then(response => {
+          // set cookie exp time
+          let expDate = new Date(response.data.Result.Value.Exp * 1000).toUTCString()
+          this.$q.cookies.set('token', response.data.Result.Value.Token, {
+            expires: expDate
+          })
         })
     }
   }
