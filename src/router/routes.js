@@ -1,12 +1,42 @@
+import { Cookies } from 'quasar'
+
+const home = {
+  path: '/',
+  component: () => import('layouts/Back.vue'),
+  children: [
+    {
+      path: '/',
+      name: 'home',
+      component: () => import('pages/Home.vue')
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import('pages/Admin.vue')
+    }
+  ],
+  beforeEnter: (to, from, next) => {
+    if (!Cookies.has('token')) {
+      next('/login')
+    }
+  }
+}
+
+const login = {
+  path: '/',
+  component: () => import('layouts/Back.vue'),
+  children: [
+    {
+      path: 'login',
+      name: 'login',
+      component: () => import('pages/Login.vue')
+    }
+  ]
+}
 
 const routes = [
-  {
-    path: '/',
-    component: () => import('layouts/MyLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/Index.vue') }
-    ]
-  }
+  home,
+  login
 ]
 
 // Always leave this as last one

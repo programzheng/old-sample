@@ -30,11 +30,11 @@
 
 <script>
 export default {
-  name: 'PageIndex',
+  name: 'Login',
   data () {
     return {
-      account: '',
-      password: ''
+      account: 'admin',
+      password: 'admin'
     }
   },
   methods: {
