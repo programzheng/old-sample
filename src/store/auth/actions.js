@@ -1,3 +1,4 @@
-export function putToken ({ commit }) {
-  commit('putToken')
+/*
+export function someAction (context) {
 }
+*/

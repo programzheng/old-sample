@@ -1,5 +1,7 @@
 import { Cookies } from 'quasar'
 
+import store from '../store/index.js'
+
 const home = {
   path: '/',
   component: () => import('layouts/Back.vue'),
@@ -10,14 +12,17 @@ const home = {
       component: () => import('pages/Home.vue')
     },
     {
-      path: '/admin',
+      path: 'admin',
       name: 'admin',
       component: () => import('pages/Admin.vue')
     }
   ],
   beforeEnter: (to, from, next) => {
+    console.log(store.state)
     if (!Cookies.has('token')) {
-      next('/login')
+      next('login')
+    } else {
+      next()
     }
   }
 }
@@ -31,7 +36,14 @@ const login = {
       name: 'login',
       component: () => import('pages/Login.vue')
     }
-  ]
+  ],
+  beforeEnter: (to, from, next) => {
+    if (Cookies.has('token')) {
+      next('')
+    } else {
+      next()
+    }
+  }
 }
 
 const routes = [

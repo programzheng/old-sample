@@ -54,6 +54,9 @@ export default {
           this.$q.cookies.set('token', response.data.Result.Value.Token, {
             expires: expDate
           })
+          if (response.data.Result.Error === null) {
+            self.$router.push({ path: '/' })
+          }
         })
     }
   }

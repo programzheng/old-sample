@@ -16,7 +16,7 @@
           Quasar App
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div><q-btn @click="logout">登出</q-btn></div>
       </q-toolbar>
     </q-header>
 
@@ -102,7 +102,11 @@ export default {
     }
   },
   methods: {
-    openURL
+    openURL,
+    logout () {
+      this.$q.cookies.remove('token')
+      this.$router.push({ path: 'login' })
+    }
   }
 }
 </script>

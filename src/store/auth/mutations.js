@@ -1,3 +1,3 @@
-export function putToken (state, token) {
-  state.token = token
+export function auth (state, auth) {
+  state.auth = auth
 }
