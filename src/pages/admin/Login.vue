@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'AdminLogin',
   data () {
     return {
       account: 'admin',
@@ -55,7 +55,7 @@ export default {
             expires: expDate
           })
           if (response.data.Result.Error === null) {
-            self.$router.push({ path: '/' })
+            self.$router.push({ path: '/admin' })
           }
         })
     }

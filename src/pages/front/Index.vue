@@ -2,7 +2,7 @@
   <q-page class="flex flex-center bg-primary">
     <q-card class="bg-grey-10 text-white">
       <q-card-section>
-        <div class="text-h6 text-center text-white">Admin</div>
+        <div class="text-h6 text-center text-white">FrontIndex</div>
       </q-card-section>
     </q-card>
   </q-page>
@@ -13,9 +13,9 @@
 
 <script>
 export default {
-  name: 'Admin',
-  mounted: () => {
-    console.log('I am Admin')
+  name: 'FrontIndex',
+  mounted () {
+    console.log('I am FrontIndex')
   }
 }
 </script>
