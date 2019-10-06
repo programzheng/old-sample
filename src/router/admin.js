@@ -1,6 +1,30 @@
+import axios from 'axios'
 import { Cookies } from 'quasar'
 
-import store from '../store/index.js'
+import store from '../store'
+
+if (Cookies.has('token')) {
+  const instance = axios.create({
+    baseURL: process.env.API,
+    timeout: 1000,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${Cookies.get('token')}`
+    }
+  })
+  instance({
+    method: 'post',
+    url: 'admin/auth'
+  })
+    .then(response => {
+      if (response.data.Result.Value) {
+        store().commit('auth/auth', true)
+      } else {
+        store().commit('auth/auth', false)
+      }
+    })
+}
 
 const routes = [
   {
@@ -10,7 +34,7 @@ const routes = [
       { path: '', component: () => import('pages/admin/Index.vue') }
     ],
     beforeEnter: (to, from, next) => {
-      console.log(store.state)
+      console.log(store().state.admin)
       if (!Cookies.has('token')) {
         next('admin/login')
       } else {

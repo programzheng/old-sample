@@ -1,3 +1,3 @@
-export function auth (state, auth) {
-  state.auth = auth
+export function auth (state, admin) {
+  state.admin = admin
 }

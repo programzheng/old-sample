@@ -15,7 +15,9 @@
         Quasar App
       </q-toolbar-title>
 
-      <div><q-btn @click="logout">登出</q-btn></div>
+      <div>
+        <q-btn @click="logout">登出</q-btn>
+      </div>
     </q-toolbar>
   </q-header>
 </template>
@@ -32,7 +34,7 @@ export default {
   methods: {
     logout () {
       this.$q.cookies.remove('token')
-      this.$router.push({ path: 'admin/login' })
+      this.$router.push({ path: '/admin/login' })
     }
   }
 }

@@ -7,7 +7,8 @@ module.exports = function (ctx) {
     // --> boot files are part of "main.js"
     boot: [
       'i18n',
-      'axios-notify'
+      'axios-notify',
+      'admin-axios-notify'
     ],
 
     css: [
