@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { Cookies } from 'quasar'
 
-import store from '../store'
+import Vue from 'vue'
 
 if (Cookies.has('token')) {
+  console.log(Vue.prototype.$store)
   const instance = axios.create({
     baseURL: process.env.API,
     timeout: 1000,
@@ -19,9 +20,9 @@ if (Cookies.has('token')) {
   })
     .then(response => {
       if (response.data.Result.Value) {
-        store().commit('auth/auth', true)
+        // store().commit('auth/auth', true)
       } else {
-        store().commit('auth/auth', false)
+        // store().commit('auth/auth', false)
       }
     })
 }
@@ -34,7 +35,7 @@ const routes = [
       { path: '', component: () => import('pages/admin/Index.vue') }
     ],
     beforeEnter: (to, from, next) => {
-      console.log(store().state.admin)
+      // console.log(store().state.admin)
       if (!Cookies.has('token')) {
         next('admin/login')
       } else {
