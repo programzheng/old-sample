@@ -11,10 +11,11 @@ Vue.use(VueRouter)
  * directly export the Router instantiation
  */
 
-export default function (/* { store, ssrContext } */) {
+export default function ({ store }) {
+  let routerAdmin = admin(store)
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
-    routes: admin.concat(front),
+    routes: routerAdmin.concat(front),
 
     // Leave these as is and change from quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
@@ -22,6 +23,5 @@ export default function (/* { store, ssrContext } */) {
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
   })
-
   return Router
 }
