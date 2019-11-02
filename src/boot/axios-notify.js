@@ -30,12 +30,12 @@ export default async ({ Vue, router, store }) => {
     if (response.data.Result.Error !== null) {
       Notify.create(response.data.Result.Error)
       if (response.status === 401) {
-        store.commit('auth/auth', false)
+        store.commit('auth/admin', false)
         router.push({ path: 'login' })
       }
       return new Promise(() => {})
     }
-    store.commit('auth/auth', true)
+    store.commit('auth/admin', true)
     return response
   })
   Vue.prototype.$axios = instance

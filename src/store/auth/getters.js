@@ -2,6 +2,6 @@
 export function someGetter (state) {
 }
 */
-export function getAuth (state) {
+export function getAuthAdmin (state) {
   return state.admin
 }

@@ -1,13 +1,7 @@
-import API from '../services/api'
-import { Cookies } from 'quasar'
+import Auth from '../services/auth'
 
 export default function (store) {
-  //每次切換頁面就驗證token
-  if (Cookies.has('token')) {
-    const instance = new API(null, null, store, null)
-    instance.post('admin/auth', {}, () => {})
-  }
-
+  const auth = new Auth(store)
   const routes = [
     {
       path: '/admin',
@@ -16,11 +10,11 @@ export default function (store) {
         { path: '', component: () => import('pages/admin/Index.vue') }
       ],
       beforeEnter: (to, from, next) => {
-        if (!Cookies.has('token') && !store.getters['auth/getAuth']) {
+        //每次切換頁面就驗證token
+        if(!auth.admin()){
           next('admin/login')
-        } else {
-          next()
         }
+        next()
       }
     },
     {
@@ -28,14 +22,7 @@ export default function (store) {
       component: () => import('layouts/admin/Main.vue'),
       children: [
         { path: 'login', component: () => import('pages/admin/Login.vue') }
-      ],
-      beforeEnter: (to, from, next) => {
-        if (Cookies.has('token') && store.getters['auth/getAuth']) {
-          next('admin')
-        } else {
-          next()
-        }
-      }
+      ]
     }
   ]
 

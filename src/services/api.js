@@ -31,7 +31,7 @@ class API {
         }
         }
         response.data = wrapperData
-        that.store.commit('auth/auth', true)
+        that.store.commit('auth/admin', true)
         return response
     }
 
@@ -47,7 +47,7 @@ class API {
         response.data = wrapperData
         switch (error.response.status) {
         case 401:
-            that.store.commit('auth/auth', false)
+            that.store.commit('auth/admin', false)
             that.router.push({ path: 'login' })
             break;
         case 404:
