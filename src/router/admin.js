@@ -1,29 +1,11 @@
-import axios from 'axios'
+import API from '../services/api'
 import { Cookies } from 'quasar'
 
 export default function (store) {
+  //每次切換頁面就驗證token
   if (Cookies.has('token')) {
-    const instance = axios.create({
-      baseURL: process.env.API,
-      timeout: 1000,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${Cookies.get('token')}`
-      }
-    })
-    instance({
-      method: 'post',
-      url: 'admin/auth'
-    })
-      .then(response => {
-        console.log(response)
-        if (response.data.Result.Error == null) {
-          store.commit('auth/auth', true)
-        } else {
-          store.commit('auth/auth', false)
-        }
-      })
+    const instance = new API(null, null, store, null)
+    instance.post('admin/auth', {}, () => {})
   }
 
   const routes = [
@@ -34,7 +16,6 @@ export default function (store) {
         { path: '', component: () => import('pages/admin/Index.vue') }
       ],
       beforeEnter: (to, from, next) => {
-        console.log(store.getters['auth/getAuth'])
         if (!Cookies.has('token') && !store.getters['auth/getAuth']) {
           next('admin/login')
         } else {
@@ -49,7 +30,6 @@ export default function (store) {
         { path: 'login', component: () => import('pages/admin/Login.vue') }
       ],
       beforeEnter: (to, from, next) => {
-        console.log(store.getters['auth/getAuth'])
         if (Cookies.has('token') && store.getters['auth/getAuth']) {
           next('admin')
         } else {

@@ -25,6 +25,9 @@
 <script>
 export default {
   name: 'AdminHeader',
+  mounted () {
+    console.log(this.$store.state.auth.admin)
+  },
   data () {
     return {
       toolbarButton: false,

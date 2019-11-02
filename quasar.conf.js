@@ -87,7 +87,13 @@ module.exports = function (ctx) {
         })
       },
       env: {
-        API: JSON.stringify(process.env.API)
+        API: JSON.stringify(process.env.API),
+        wrapper: {
+          status: JSON.stringify('Status'),
+          code: JSON.stringify('Code'),
+          value: JSON.stringify('Value'),
+          message: JSON.stringify('Message')
+        },
       }
     },
 

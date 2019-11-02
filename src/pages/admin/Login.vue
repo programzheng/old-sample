@@ -39,26 +39,19 @@ export default {
   },
   methods: {
     doSubmit () {
-      let self = this
-      this.$adminAxios({
-        method: 'post',
-        url: 'admin/login',
-        data: {
-          account: self.account,
-          password: self.password
-        }
-      })
-        .then(response => {
-          console.log(response)
+      const self = this
+      this.$axios.post('admin/login', {
+        account: self.account,
+        password: self.password
+      },(data) => {
+          console.log(data)
           // set cookie exp time
-          let expDate = new Date(response.data.Result.Value.Exp * 1000).toUTCString()
-          this.$q.cookies.set('token', response.data.Result.Value.Token, {
+          let expDate = new Date(data.value.Exp * 1000).toUTCString()
+          this.$q.cookies.set('token', data.value.Token, {
             expires: expDate
           })
-          if (response.data.Result.Error === null) {
-            self.$router.push({ path: '/admin' })
-          }
-        })
+          self.$router.push({ path: '/admin' })
+      })
     }
   }
 }
