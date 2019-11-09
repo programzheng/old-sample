@@ -1,8 +1,8 @@
 <template>
-  <q-page class="flex flex-center bg-primary">
-    <q-card class="bg-grey-10 text-white">
+  <q-page class="flex flex-center">
+    <q-card>
       <q-card-section>
-        <div class="text-h6 text-center text-white">FrontIndex</div>
+        <div class="text-h6 text-center">FrontIndex</div>
       </q-card-section>
     </q-card>
   </q-page>

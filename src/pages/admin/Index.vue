@@ -1,8 +1,8 @@
 <template>
-  <q-page class="flex flex-center bg-primary">
-    <q-card class="bg-grey-10 text-white">
+  <q-page class="flex flex-center">
+    <q-card>
       <q-card-section>
-        <div class="text-h6 text-center text-white">AdminIndex</div>
+        <div class="text-h6 text-center">AdminIndex</div>
         <dir>{{store}}</dir>
       </q-card-section>
     </q-card>

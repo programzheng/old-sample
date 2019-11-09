@@ -2,7 +2,6 @@
   <q-drawer
     v-model="leftDrawerOpen"
     bordered
-    content-class="bg-grey-2"
   >
     <q-list>
       <q-item-label header>功能選項</q-item-label>

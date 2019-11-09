@@ -1,6 +1,6 @@
 <template>
-  <q-page class="flex flex-center bg-primary">
-    <q-card class="bg-grey-10 text-white">
+  <q-page class="flex flex-center">
+    <q-card>
       <q-card-section>
         <div class="text-h6 text-center text-white">登入</div>
       </q-card-section>
@@ -16,7 +16,7 @@
                 <q-input dark standout v-model="password" label="密碼" ref="password" :rules="[ val => val && val.length > 0 || '必填']" />
               </div>
               <div class="col col-xs-10 offset-xs-1">
-                <q-btn class="bg-primary text-white full-width" label="登入" type="submit" />
+                <q-btn class="full-width" label="登入" type="submit" />
               </div>
             </div>
         </q-form>

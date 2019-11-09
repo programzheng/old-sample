@@ -64,7 +64,11 @@ module.exports = function (ctx) {
         'LoadingBar',
         'Notify',
         'Cookies'
-      ]
+      ],
+
+      config: {
+        dark: true // or Boolean true/false
+      }
     },
 
     supportIE: true,
