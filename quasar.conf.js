@@ -7,6 +7,7 @@ module.exports = function (ctx) {
     // --> boot files are part of "main.js"
     boot: [
       'i18n',
+      'loadingbar',
       'axios'
     ],
 
@@ -67,7 +68,7 @@ module.exports = function (ctx) {
       ],
 
       config: {
-        dark: true // or Boolean true/false
+        dark: 'auto' // or Boolean true/false
       }
     },
 
