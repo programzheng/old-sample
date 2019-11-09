@@ -30,7 +30,6 @@
 
 <script>
 export default {
-  name: 'AdminLogin',
   data () {
     return {
       account: 'admin',

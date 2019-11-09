@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  name: 'AdminIndex',
   computed: {
     store: {
       get () {

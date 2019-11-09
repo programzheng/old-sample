@@ -13,7 +13,6 @@
 
 <script>
 export default {
-  name: 'FrontIndex',
   mounted () {
     console.log('I am FrontIndex')
   }

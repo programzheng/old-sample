@@ -15,7 +15,6 @@ import Menu from './Menu'
 import { openURL } from 'quasar'
 
 export default {
-  name: 'AdminMain',
   components: {
     Header,
     Menu

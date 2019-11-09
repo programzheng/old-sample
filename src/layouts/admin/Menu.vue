@@ -28,7 +28,6 @@
 
 <script>
 export default {
-  name: 'AdminMenu',
   computed: {
     leftDrawerOpen: {
       get() {
