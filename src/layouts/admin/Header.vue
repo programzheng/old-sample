@@ -16,7 +16,7 @@
       </q-toolbar-title>
 
       <div>
-        <q-btn v-if="auth" to="/admin">回首頁</q-btn>
+        <q-btn v-if="auth && this.$router.currentRoute.name !== 'home'" to="/admin">回首頁</q-btn>
         <q-btn @click="logout">登出</q-btn>
       </div>
     </q-toolbar>

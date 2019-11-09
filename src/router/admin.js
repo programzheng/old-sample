@@ -4,11 +4,13 @@ export default function (store) {
   const auth = new Auth(store)
   function validAuth(to, from, next){
     //每次切換頁面就驗證token
-    if(!auth.admin()){
-      next('admin/login')
-    }
-    store.commit('admin/toolbarButtonStatus', true)
-    next()
+    auth.admin().then((status) => {
+      if(!status){
+        next('admin/login')
+      }
+      store.commit('admin/toolbarButtonStatus', true)
+      next()
+    });
   }
   const routes = [
     {
