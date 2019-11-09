@@ -14,6 +14,7 @@ export default function (store) {
         if(!auth.admin()){
           next('admin/login')
         }
+        store.commit('admin/toolbarButtonStatus', true)
         next()
       }
     },

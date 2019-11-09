@@ -67,10 +67,15 @@
 <script>
 export default {
   name: 'AdminMenu',
-  data () {
-    return {
-      leftDrawerOpen: false
+  computed: {
+    leftDrawerOpen: {
+      get() {
+        return this.$store.state.admin.leftDrawerOpen
+      },
+      set (status) {
+        this.$store.commit('admin/leftDrawerOpenStatus', status)
+      }
     }
-  }
+  },
 }
 </script>

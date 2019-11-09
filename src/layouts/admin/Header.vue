@@ -5,7 +5,7 @@
         flat
         dense
         round
-        @click="leftDrawerOpen = !leftDrawerOpen"
+        @click="leftDrawerOpenStatus()"
         aria-label="Menu"
       >
         <q-icon name="menu" />
@@ -25,17 +25,27 @@
 <script>
 export default {
   name: 'AdminHeader',
-  mounted () {
-    console.log(this.$store.state.auth.admin)
-  },
-  data () {
-    return {
-      toolbarButton: false,
-      leftDrawerOpen: false
+  computed: {
+    toolbarButton: {
+      get () {
+        return this.$store.state.admin.toolbarButton
+      }
+    },
+    leftDrawerOpen: {
+      get () {
+        return this.$store.state.admin.leftDrawerOpen
+      },
+      set (status) {
+        this.$store.commit('admin/leftDrawerOpenStatus', status)
+      }
     }
   },
   methods: {
+    leftDrawerOpenStatus () {
+      this.leftDrawerOpen = !this.leftDrawerOpen
+    },
     logout () {
+      this.$store.commit('admin/toolbarButtonStatus', false)
       this.$q.cookies.remove('token')
       this.$router.push({ path: '/admin/login' })
     }

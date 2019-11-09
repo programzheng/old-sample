@@ -15,9 +15,6 @@
 <script>
 export default {
   name: 'AdminIndex',
-  mounted: () => {
-    console.log('I am AdminIndex')
-  },
   computed: {
     store: {
       get () {

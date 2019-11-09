@@ -44,13 +44,13 @@ export default {
         account: self.account,
         password: self.password
       },(data) => {
-          console.log(data)
           // set cookie exp time
           let expDate = new Date(data.value.Exp * 1000).toUTCString()
           this.$q.cookies.set('token', data.value.Token, {
             expires: expDate
           })
           self.$router.push({ path: '/admin' })
+          this.$store.commit('admin/toolbarButtonStatus', true)
       })
     }
   }
