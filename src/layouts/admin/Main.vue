@@ -30,12 +30,13 @@ export default {
     openURL
   },
   beforeRouteUpdate (to, from, next) {
-    //每次切換頁面就驗證token
-    if(!this.auth.admin()){
-      next('admin/login')
-    }
-    this.$store.commit('admin/toolbarButtonStatus', true)
-    next()
+    this.auth.admin().then((status) => {
+      if(!status){
+        next('admin/login')
+      }
+      this.$store.commit('admin/toolbarButtonStatus', true)
+      next()
+    });
   },
 }
 </script>

@@ -12,11 +12,12 @@ class Auth {
   
   admin(){
     if (Cookies.has('token')) {
-      return this.api.post('admin/auth', {}, (data) => {
-        if (data.code === 200) {
+      return this.api.post('admin/auth', {}).then((response)=>{
+        if (response.data.code === 200) {
           this.store.commit('auth/admin', true)
           return true
         }
+        return false
       })
     }
     return false

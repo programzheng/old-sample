@@ -30,7 +30,6 @@ class API {
         }
         }
         response.data = wrapperData
-        that.store.commit('auth/admin', true)
         return response
     }
 
@@ -44,19 +43,8 @@ class API {
         }
         }
         response.data = wrapperData
-        switch (error.response.status) {
-        case 401:
-            that.store.commit('auth/admin', false)
-            that.router.push({ path: 'login' })
-            break;
-        case 404:
-            that.router.push({ path: '404' })
-            break;
-        default:
-            that.toast.error(error.response.data.message)
-            break;
-        }
-        return new Promise(() => {})
+        that.toast.error(error.response.data.message)
+        return response
     }
 
     // redirectTo = (document, path) => {
@@ -75,7 +63,7 @@ class API {
         url: path,
         responseType: 'json',
         data: payload
-        }).then((response) => callback(response.data));
+        })
     }
 
     post(path, payload, callback) {
@@ -84,7 +72,7 @@ class API {
         url: path,
         responseType: 'json',
         data: payload
-        }).then((response) => callback(response.data));
+        })
     }
 }
 

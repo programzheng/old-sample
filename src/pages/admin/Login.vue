@@ -42,10 +42,10 @@ export default {
       this.$axios.post('admin/login', {
         account: self.account,
         password: self.password
-      },(data) => {
+      }).then((response) => {
           // set cookie exp time
-          let expDate = new Date(data.value.Exp * 1000).toUTCString()
-          this.$q.cookies.set('token', data.value.Token, {
+          let expDate = new Date(response.data.value.Exp * 1000).toUTCString()
+          this.$q.cookies.set('token', response.data.value.Token, {
             expires: expDate
           })
           self.$router.push({ path: '/admin' })
