@@ -22,11 +22,11 @@ export default function (store) {
           component: () => import('pages/admin/Index.vue'),
         },
         {
-          path: 'administrator',
-          name: 'administrator',
+          path: 'member',
+          name: 'member',
           component: { render: h => h('router-view') },
           children: [
-            { path: 'account', component: () => import('pages/admin/administrator/Account.vue') },
+            { path: 'administrator', component: () => import('pages/admin/member/Administrator.vue') },
           ],
         }
       ],
