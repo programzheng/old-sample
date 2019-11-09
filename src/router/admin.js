@@ -7,7 +7,19 @@ export default function (store) {
       path: '/admin',
       component: () => import('layouts/admin/Main.vue'),
       children: [
-        { path: '', component: () => import('pages/admin/Index.vue') }
+        {
+          path: '',
+          name: 'home',
+          component: () => import('pages/admin/Index.vue'),
+        },
+        {
+          path: 'administrator',
+          name: 'administrator',
+          component: { render: h => h('router-view') },
+          children: [
+            { path: 'account', component: () => import('pages/admin/administrator/Account.vue') },
+          ]
+        }
       ],
       beforeEnter: (to, from, next) => {
         //每次切換頁面就驗證token
