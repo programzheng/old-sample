@@ -2,10 +2,19 @@ import Auth from '../services/auth'
 
 export default function (store) {
   const auth = new Auth(store)
+  function validAuth(to, from, next){
+    //每次切換頁面就驗證token
+    if(!auth.admin()){
+      next('admin/login')
+    }
+    store.commit('admin/toolbarButtonStatus', true)
+    next()
+  }
   const routes = [
     {
       path: '/admin',
       component: () => import('layouts/admin/Main.vue'),
+      beforeEnter: validAuth,
       children: [
         {
           path: '',
@@ -18,17 +27,9 @@ export default function (store) {
           component: { render: h => h('router-view') },
           children: [
             { path: 'account', component: () => import('pages/admin/administrator/Account.vue') },
-          ]
+          ],
         }
       ],
-      beforeEnter: (to, from, next) => {
-        //每次切換頁面就驗證token
-        if(!auth.admin()){
-          next('admin/login')
-        }
-        store.commit('admin/toolbarButtonStatus', true)
-        next()
-      }
     },
     {
       path: '/admin',
