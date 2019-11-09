@@ -22,7 +22,6 @@ class API {
     }
 
     handleSuccess(that, response) {
-        console.log(response);
         const wrapperObject = process.env.wrapper
         let wrapperData = {}
         for (let key in wrapperObject) {
