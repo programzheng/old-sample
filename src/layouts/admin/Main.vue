@@ -17,11 +17,6 @@ import { openURL } from 'quasar'
 import Auth from '../../services/auth'
 
 export default {
-  data() {
-    return {
-      auth: new Auth(this.$store)
-    }
-  },
   components: {
     Header,
     Menu
@@ -30,13 +25,21 @@ export default {
     openURL
   },
   beforeRouteUpdate (to, from, next) {
-    this.auth.admin().then((status) => {
-      if(!status){
-        next('admin/login')
-      }
-      this.$store.commit('admin/toolbarButtonStatus', true)
-      next()
-    });
+    if (this.$q.cookies.has('token')) {
+      let auth = new Auth(this.$store)
+      auth.admin().then((status) => {
+        if(!status){
+          next('/admin/login')
+          return
+        }
+        next()
+        return
+      })
+    }
+    else{
+      next('/admin/login')
+      return
+    }
   },
 }
 </script>

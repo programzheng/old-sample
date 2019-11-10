@@ -1,16 +1,24 @@
 import Auth from '../services/auth'
+import { Cookies } from 'quasar'
 
 export default function (store) {
-  const auth = new Auth(store)
   function validAuth(to, from, next){
     //每次切換頁面就驗證token
-    auth.admin().then((status) => {
-      if(!status){
-        next('admin/login')
-      }
-      store.commit('admin/toolbarButtonStatus', true)
-      next()
-    });
+    if (Cookies.has('token')) {
+      let auth = new Auth(store)
+      auth.admin().then((status) => {
+        if(!status){
+          next('/admin/login')
+          return
+        }
+        next()
+        return
+      })
+    }
+    else{
+      next('/admin/login')
+      return
+    }
   }
   const routes = [
     {
@@ -37,7 +45,11 @@ export default function (store) {
       path: '/admin',
       component: () => import('layouts/admin/Main.vue'),
       children: [
-        { path: 'login', component: () => import('pages/admin/Login.vue') }
+        {
+          path: 'login',
+          name: 'login',
+          component: () => import('pages/admin/Login.vue')
+        }
       ]
     }
   ]

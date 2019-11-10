@@ -29,6 +29,9 @@
 </style>
 
 <script>
+
+import jwt from '../../function/jwt'
+
 export default {
   data () {
     return {
@@ -38,18 +41,18 @@ export default {
   },
   methods: {
     doSubmit () {
-      const self = this
+      const that = this
       this.$axios.post('admin/login', {
-        account: self.account,
-        password: self.password
+        account: that.account,
+        password: that.password
       }).then((response) => {
           // set cookie exp time
-          let expDate = new Date(response.data.value.Exp * 1000).toUTCString()
+          let parseToken = jwt.parseJwt(response.data.value.Token);
+          let expDate = new Date(parseToken.exp * 1000).toUTCString()
           this.$q.cookies.set('token', response.data.value.Token, {
             expires: expDate
           })
-          self.$router.push({ path: '/admin' })
-          this.$store.commit('admin/toolbarButtonStatus', true)
+          that.$router.push({ path: '/admin' })
       })
     }
   }

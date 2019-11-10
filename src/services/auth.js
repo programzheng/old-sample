@@ -11,16 +11,15 @@ class Auth {
   }
   
   admin(){
-    if (Cookies.has('token')) {
-      return this.api.post('admin/auth', {}).then((response)=>{
-        if (response.data.code === 200) {
-          this.store.commit('auth/admin', true)
-          return true
-        }
+    return this.api.post('admin/auth', {}).then((response)=>{
+      if (response.data.code === 200) {
+        this.store.commit('auth/admin', true)
+        this.store.commit('admin/toolbarButtonStatus', true)
+        return true
+      }
+    }).catch((error)=>{
         return false
-      })
-    }
-    return false
+    })
   }
 }
 export default Auth;

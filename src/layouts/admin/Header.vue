@@ -17,13 +17,15 @@
 
       <div>
         <q-btn v-if="auth && this.$router.currentRoute.name !== 'home'" to="/admin">回首頁</q-btn>
-        <q-btn @click="logout">登出</q-btn>
+        <q-btn v-if="auth" @click="logout">登出</q-btn>
       </div>
     </q-toolbar>
   </q-header>
 </template>
 
 <script>
+import jwt from '../../function/jwt'
+
 export default {
   computed: {
     auth: {
@@ -59,6 +61,7 @@ export default {
       this.$q.cookies.remove('token')
       this.auth = false
       this.toolbarButton = false
+      this.leftDrawerOpen = false
       this.$router.push({ path: '/admin/login' })
     }
   }
