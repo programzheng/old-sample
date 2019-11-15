@@ -2,7 +2,7 @@
   <q-page class="flex flex-center">
     <q-card>
       <q-card-section>
-        <div class="text-h6 text-center text-white">登入</div>
+        <div class="text-h6 text-center">登入</div>
       </q-card-section>
       <div class="q-pa-md">
         <q-form
@@ -10,10 +10,10 @@
         >
             <div class="row">
               <div class="col col-xs-10 offset-xs-1">
-                <q-input dark standout v-model="account" label="帳號" ref="account" :rules="[ val => val && val.length > 0 || '必填']" />
+                <q-input standout v-model="account" label="帳號" ref="account" :rules="[ val => val && val.length > 0 || '必填']" />
               </div>
               <div class="col col-xs-10 offset-xs-1">
-                <q-input dark standout v-model="password" label="密碼" ref="password" :rules="[ val => val && val.length > 0 || '必填']" />
+                <q-input standout v-model="password" label="密碼" ref="password" :rules="[ val => val && val.length > 0 || '必填']" />
               </div>
               <div class="col col-xs-10 offset-xs-1">
                 <q-btn class="full-width" label="登入" type="submit" />
