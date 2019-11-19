@@ -28,19 +28,16 @@ export default {
     if (this.$q.cookies.has('token')) {
       let auth = new Auth(this.$store)
       auth.admin().then((status) => {
-        if(!status){
+        if (!status) {
           next('/admin/login')
           return
         }
         next()
-        return
       })
-    }
-    else{
+    } else {
       next('/admin/login')
-      return
     }
-  },
+  }
 }
 </script>
 

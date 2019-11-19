@@ -36,13 +36,13 @@
 export default {
   computed: {
     leftDrawerOpen: {
-      get() {
+      get () {
         return this.$store.state.admin.leftDrawerOpen
       },
       set (status) {
         this.$store.commit('admin/leftDrawerOpenStatus', status)
       }
     }
-  },
+  }
 }
 </script>

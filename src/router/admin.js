@@ -2,22 +2,19 @@ import Auth from '../services/auth'
 import { Cookies } from 'quasar'
 
 export default function (store) {
-  function validAuth(to, from, next){
-    //每次切換頁面就驗證token
+  function validAuth (to, from, next) {
+    // 每次切換頁面就驗證token
     if (Cookies.has('token')) {
       let auth = new Auth(store)
       auth.admin().then((status) => {
-        if(!status){
+        if (!status) {
           next('/admin/login')
           return
         }
         next()
-        return
       })
-    }
-    else{
+    } else {
       next('/admin/login')
-      return
     }
   }
   const routes = [
@@ -29,17 +26,17 @@ export default function (store) {
         {
           path: '',
           name: 'home',
-          component: () => import('pages/admin/Index.vue'),
+          component: () => import('pages/admin/Index.vue')
         },
         {
           path: 'member',
           name: 'member',
           component: { render: h => h('router-view') },
           children: [
-            { path: 'administrator', component: () => import('pages/admin/member/Administrator.vue') },
-          ],
+            { path: 'administrator', component: () => import('pages/admin/member/Administrator.vue') }
+          ]
         }
-      ],
+      ]
     },
     {
       path: '/admin',

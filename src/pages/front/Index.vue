@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  created() {
+  created () {
     this.$q.dark.set(false)
   },
   mounted () {

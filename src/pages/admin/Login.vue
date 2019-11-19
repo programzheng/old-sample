@@ -46,13 +46,13 @@ export default {
         account: that.account,
         password: that.password
       }).then((response) => {
-          // set cookie exp time
-          let parseToken = jwt.parseJwt(response.data.value.Token);
-          let expDate = new Date(parseToken.exp * 1000).toUTCString()
-          this.$q.cookies.set('token', response.data.value.Token, {
-            expires: expDate
-          })
-          that.$router.push({ path: '/admin' })
+        // set cookie exp time
+        let parseToken = jwt.parseJwt(response.data.value.Token)
+        let expDate = new Date(parseToken.exp * 1000).toUTCString()
+        this.$q.cookies.set('token', response.data.value.Token, {
+          expires: expDate
+        })
+        that.$router.push({ path: '/admin' })
       })
     }
   }

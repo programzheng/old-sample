@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import jwt from '../../function/jwt'
 
 export default {
   computed: {
