@@ -3,17 +3,9 @@ export function someMutation (state) {
 }
 */
 export function toolbarButtonStatus (state, status) {
-  if (status) {
-    state.toolbarButton = status
-  } else {
-    state.toolbarButton = !state.toolbarButton
-  }
+  state.toolbarButton = status
 }
 
 export function leftDrawerOpenStatus (state, status) {
-  if (status) {
-    state.leftDrawerOpen = status
-  } else {
-    state.leftDrawerOpen = !state.leftDrawerOpen
-  }
+  state.leftDrawerOpen = status
 }
