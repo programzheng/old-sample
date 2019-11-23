@@ -16,7 +16,7 @@
       </q-toolbar-title>
 
       <div>
-        <q-btn v-if="auth && this.$router.currentRoute.name !== 'home'" to="/admin">回首頁</q-btn>
+        <q-btn v-if="auth" @click="goHome">回首頁</q-btn>
         <q-btn v-if="auth" @click="logout">登出</q-btn>
       </div>
     </q-toolbar>
@@ -55,6 +55,9 @@ export default {
   methods: {
     leftDrawerOpenStatus () {
       this.leftDrawerOpen = !this.leftDrawerOpen
+    },
+    goHome () {
+      this.$router.push('/admin', () => {})
     },
     logout () {
       this.$q.cookies.remove('token')
