@@ -104,6 +104,10 @@ module.exports = function (ctx) {
           value: JSON.stringify('Value'),
           message: JSON.stringify('Message')
         },
+        dataTable: {
+          page_num: 0,
+          page_size: 10
+        }
       }
     },
 
