@@ -13,13 +13,12 @@
       >
         <q-expansion-item
           expand-separator
-          icon="people"
+          icon="vpn_key"
           label="會員帳號"
           caption="Account"
         >
           <q-item clickable v-ripple to="/admin/member/administrator">
             <q-item-section avatar>
-              <q-icon name="people" />
             </q-item-section>
             <q-item-section>
               <q-item-label>管理員帳號</q-item-label>
@@ -27,6 +26,21 @@
             </q-item-section>
           </q-item>
         </q-expansion-item>
+      </q-expansion-item>
+            <q-expansion-item
+        expand-separator
+        icon="description"
+        label="文章系統"
+        caption="post"
+      >
+          <q-item clickable v-ripple to="/admin/post/index">
+            <q-item-section avatar>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>文章管理</q-item-label>
+              <q-item-label caption>Post</q-item-label>
+            </q-item-section>
+          </q-item>
       </q-expansion-item>
     </q-list>
   </q-drawer>

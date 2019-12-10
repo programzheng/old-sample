@@ -35,6 +35,14 @@ export default function (store) {
           children: [
             { path: 'administrator', component: () => import('pages/admin/member/Administrator.vue') }
           ]
+        },
+        {
+          path: 'post',
+          name: 'post',
+          component: { render: h => h('router-view') },
+          children: [
+            { path: 'index', component: () => import('pages/admin/post/Index.vue') }
+          ]
         }
       ]
     },
