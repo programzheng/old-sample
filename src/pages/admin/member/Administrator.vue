@@ -1,24 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <q-table
-      title="管理會員"
-      :data="data"
-      :columns="columns"
-      row-key="id"
-      :pagination.sync="pagination"
-      :filter="filter"
-      @request="onRequest"
-      binary-state-sort
-    >
-      <template v-slot:top-right>
-        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
-          <template v-slot:append>
-            <q-icon name="search" />
-          </template>
-        </q-input>
-      </template>
-
-    </q-table>
+    <Table title="管理帳號" sortBy="id" :columns="columns"></Table>
   </q-page>
 </template>
 
@@ -26,18 +8,13 @@
 </style>
 
 <script>
+import Table from '../../../components/Table'
 export default {
+  components: {
+    Table
+  },
   data () {
     return {
-      filter: '',
-      loading: false,
-      pagination: {
-        sortBy: 'id',
-        descending: false,
-        page: 1,
-        rowsPerPage: 3,
-        rowsNumber: 10
-      },
       columns: [
         {
           name: 'id',
