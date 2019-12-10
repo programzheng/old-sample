@@ -34,11 +34,11 @@ class API {
   }
 
     handleError = (that, error) => {
-      if (!error.response) {
-        that.toast.error('服務器錯誤')
-        return
-      }
       let response = error.response
+      if (!response) {
+        that.toast.error('服務器錯誤')
+        return Promise.reject('服務器錯誤')
+      }
       const wrapperObject = process.env.wrapper
       let wrapperData = {}
       for (let key in wrapperObject) {
@@ -48,7 +48,7 @@ class API {
       }
       response.data = wrapperData
       that.toast.error(error.response.data.message)
-      return response
+      return Promise.reject(error.response.data.message)
     }
 
     // redirectTo = (document, path) => {
