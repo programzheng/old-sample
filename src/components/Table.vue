@@ -25,17 +25,15 @@
 
 <script>
 export default {
-  props: ['title', 'sortBy', 'columns'],
+  props: {
+    title: String,
+    paginationSetting: Object,
+    columns: Array
+  },
   data () {
     return {
       filter: '',
-      pagination: {
-        sortBy: this.sortBy,
-        descending: false,
-        page: 1,
-        rowsPerPage: 3,
-        rowsNumber: 10
-      },
+      pagination: this.paginationSetting,
       loading: false,
       data: []
     }
