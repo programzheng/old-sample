@@ -28,6 +28,7 @@ export default {
   props: {
     title: String,
     paginationSetting: Object,
+    API: String,
     columns: Array
   },
   data () {
@@ -74,7 +75,7 @@ export default {
       this.loading = false
     },
     getDataFromSever (startRow, count, filter, sortBy, descending) {
-      this.$axios.get('administrator/administrators', {
+      this.$axios.get(this.API, {
         page_num: process.env.dataTable.page_num,
         page_size: process.env.dataTable.page_size
       }).then(response => {

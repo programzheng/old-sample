@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <Table title="管理帳號" :pagination-setting="pagination" :columns="columns"></Table>
+    <Table title="管理帳號" :API="API" :pagination-setting="pagination" :columns="columns"></Table>
   </q-page>
 </template>
 
@@ -15,6 +15,7 @@ export default {
   },
   data () {
     return {
+      API: 'administrator/administrators',
       pagination: {
         sortBy: 'id',
         descending: false,
