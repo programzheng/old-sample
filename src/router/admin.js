@@ -33,7 +33,7 @@ export default function (store) {
           name: 'member',
           component: { render: h => h('router-view') },
           children: [
-            { path: 'administrator', component: () => import('pages/admin/member/Administrator.vue') }
+            { path: 'admin', component: () => import('pages/admin/member/admin.vue') }
           ]
         },
         {

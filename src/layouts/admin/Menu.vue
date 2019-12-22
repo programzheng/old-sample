@@ -17,12 +17,12 @@
           label="會員帳號"
           caption="Account"
         >
-          <q-item clickable v-ripple to="/admin/member/administrator">
+          <q-item clickable v-ripple to="/admin/member/admin">
             <q-item-section avatar>
             </q-item-section>
             <q-item-section>
               <q-item-label>管理員帳號</q-item-label>
-              <q-item-label caption>Administrator</q-item-label>
+              <q-item-label caption>Admins</q-item-label>
             </q-item-section>
           </q-item>
         </q-expansion-item>

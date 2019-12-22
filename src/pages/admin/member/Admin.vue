@@ -15,7 +15,7 @@ export default {
   },
   data () {
     return {
-      API: 'administrator/administrators',
+      API: 'admins',
       pagination: {
         sortBy: 'id',
         descending: false,
