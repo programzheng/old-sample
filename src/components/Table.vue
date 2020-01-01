@@ -10,6 +10,7 @@
       binary-state-sort
     >
       <template v-slot:top-right>
+        <Action title="add" :columns="columns"></Action>
         <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
           <template v-slot:append>
             <q-icon name="search" />
@@ -24,7 +25,11 @@
 </style>
 
 <script>
+import Action from '../components/Action'
 export default {
+  components: {
+    Action
+  },
   props: {
     title: String,
     paginationSetting: Object,

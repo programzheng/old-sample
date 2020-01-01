@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <Table title="管理帳號" :API="API" :pagination-setting="pagination" :columns="columns"></Table>
+    <Table title="管理帳號" :API="API" :pagination-setting="pagination" :columns="columns" />
   </q-page>
 </template>
 

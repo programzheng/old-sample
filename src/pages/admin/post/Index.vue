@@ -1,21 +1,23 @@
 <template>
     <q-page class="flex flex-center">
-      <Table title="文章管理" :pagination-setting="pagination" :columns="columns"></Table>
-      <Dialog title="add" :dialog="dialog" :columns="columns"></Dialog>
+      <Table
+        title="文章管理"
+        :API="API"
+        :pagination-setting="pagination"
+        :columns="columns"
+      />
     </q-page>
 </template>
 
 <script>
 import Table from '../../../components/Table'
-import Dialog from '../../../components/Dialog'
 export default {
   components: {
-    Table,
-    Dialog
+    Table
   },
   data () {
     return {
-      dialog: false,
+      API: 'posts',
       pagination: {
         sortBy: 'id',
         descending: false,
@@ -33,6 +35,7 @@ export default {
           format: val => `${val}`,
           sortable: true
         },
+        { name: 'image', type: 'image', align: 'center', label: '圖片', field: 'Image', sortable: true },
         { name: 'title', type: 'input', align: 'center', label: '標題', field: 'Title', sortable: true },
         { name: 'summary', type: 'textarea', align: 'center', label: '簡介', field: 'Summary', sortable: true }
       ],
