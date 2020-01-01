@@ -35,9 +35,9 @@ export default {
           format: val => `${val}`,
           sortable: true
         },
-        { name: 'image', type: 'image', align: 'center', label: '圖片', field: 'Image', sortable: true },
-        { name: 'title', type: 'input', align: 'center', label: '標題', field: 'Title', sortable: true },
-        { name: 'summary', type: 'textarea', align: 'center', label: '簡介', field: 'Summary', sortable: true }
+        { name: 'image', type: 'image', align: 'center', label: '圖片', field: 'Image', sortable: true, value: [] },
+        { name: 'title', type: 'input', align: 'center', label: '標題', field: 'Title', sortable: true, value: '' },
+        { name: 'summary', type: 'textarea', align: 'center', label: '簡介', field: 'Summary', sortable: true, value: '' }
       ],
       data: []
     }
