@@ -60,12 +60,15 @@ export default {
   },
   data () {
     return {
-      url: this.apiSetting.baseURL + '/files'
+      url: this.apiSetting.baseURL + 'files'
     }
   },
   beforeCreate () {
     // 抓取預設api設定
     this.apiSetting = this.$axios.service.defaults
+  },
+  mounted () {
+    console.log(this.value)
   },
   methods: {
     factoryFn (file) {
@@ -81,7 +84,12 @@ export default {
     },
     fileUploaded ({ file, xhr }) {
       let response = JSON.parse(xhr.response)
-      console.log(response)
+      this.value.push(...response.Value)
+      // response.Value.forEach(imageId => {
+      //   this.value.push(imageId)
+      // })
+      // this.value.flat(Infinity)
+      console.log(this.value)
     }
   }
 }

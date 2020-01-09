@@ -37,6 +37,7 @@
             </q-input>
           </q-form>
         </q-card-section>
+        <q-btn label="Add" @click="add()"/>
       </q-card>
     </q-dialog>
   </div>
@@ -54,7 +55,24 @@ export default {
   },
   data () {
     return {
-      addDialog: false
+      addDialog: false,
+      addRow: Array
+    }
+  },
+  methods: {
+    formatColumn () {
+      // 使用map做deep copy
+      let columns = this.columns.map(e => {
+        const column = { ...e }
+        column.type === 'image' && (column.value = JSON.stringify(column.value))
+        return column
+      })
+      return columns
+    },
+    add () {
+      let addRow = this.formatColumn()
+      console.log(addRow)
+      // console.log(this.columns)
     }
   }
 }
