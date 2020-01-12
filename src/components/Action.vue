@@ -70,8 +70,8 @@ export default {
       return columns
     },
     add () {
-      let addRow = this.formatColumn()
-      console.log(addRow)
+      let row = this.formatColumn()
+      console.log(row)
       // console.log(this.columns)
     }
   }

@@ -31,13 +31,36 @@ export default {
           required: true,
           label: 'id',
           align: 'center',
-          field: row => row.ID,
-          format: val => `${val}`,
+          field: 'id',
           sortable: true
         },
-        { name: 'image', type: 'image', align: 'center', label: '圖片', field: 'Image', sortable: true, value: [] },
-        { name: 'title', type: 'input', align: 'center', label: '標題', field: 'Title', sortable: true, value: '' },
-        { name: 'summary', type: 'textarea', align: 'center', label: '簡介', field: 'Summary', sortable: true, value: '' }
+        {
+          name: 'files',
+          type: 'files',
+          align: 'center',
+          label: '圖片',
+          field: 'files',
+          sortable: true,
+          value: []
+        },
+        {
+          name: 'title',
+          type: 'input',
+          align: 'center',
+          label: '標題',
+          field: 'title',
+          sortable: true,
+          value: ''
+        },
+        {
+          name: 'summary',
+          type: 'textarea',
+          align: 'center',
+          label: '簡介',
+          field: 'summary',
+          sortable: true,
+          value: ''
+        }
       ],
       data: []
     }

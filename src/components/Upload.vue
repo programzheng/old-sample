@@ -84,11 +84,10 @@ export default {
     },
     fileUploaded ({ file, xhr }) {
       let response = JSON.parse(xhr.response)
-      this.value.push(...response.Value)
-      // response.Value.forEach(imageId => {
-      //   this.value.push(imageId)
-      // })
-      // this.value.flat(Infinity)
+      const files = [ ...response.Value ]
+      files.forEach(file => {
+        this.value.push(file.ID)
+      })
       console.log(this.value)
     }
   }
