@@ -68,18 +68,18 @@ class API {
     })
   }
 
-  patch (path, payload) {
+  post (path, payload) {
     return this.service.request({
-      method: 'PATCH',
+      method: 'POST',
       url: path,
       responseType: 'json',
       data: payload
     })
   }
 
-  post (path, payload) {
+  patch (path, payload) {
     return this.service.request({
-      method: 'POST',
+      method: 'PATCH',
       url: path,
       responseType: 'json',
       data: payload
