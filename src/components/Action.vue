@@ -6,37 +6,37 @@
         <q-card-section>
           <div class="text-h6">{{title}}</div>
         </q-card-section>
-        <q-card-section v-for="(column, columnKey) in columns" :key="columnKey">
-          <q-form>
-            <!-- 圖片上傳 -->
-            <template v-if="column.type === 'image'">
-              <Upload
+        <q-form>
+          <q-card-section v-for="(column, columnKey) in columns" :key="columnKey">
+              <!-- 圖片上傳 -->
+              <template v-if="column.type === 'files'">
+                <Upload
+                  :label="column.label"
+                  :name="column.field"
+                  :value="column.value"
+                  v-model="column.value"
+                />
+              </template>
+              <!-- 文字輸入 -->
+              <q-input
+                v-if="column.type === 'input'"
                 :label="column.label"
                 :name="column.field"
-                :value="column.value"
                 v-model="column.value"
-              />
-            </template>
-            <!-- 文字輸入 -->
-            <q-input
-              v-if="column.type === 'input'"
-              :label="column.label"
-              :name="column.field"
-              v-model="column.value"
-            >
-            </q-input>
-            <!-- 多行文字輸入 -->
-            <q-input
-              v-if="column.type === 'textarea'"
-              :label="column.label"
-              :name="column.field"
-              type="textarea"
-              filled
-              v-model="column.value"
-            >
-            </q-input>
-          </q-form>
-        </q-card-section>
+              >
+              </q-input>
+              <!-- 多行文字輸入 -->
+              <q-input
+                v-if="column.type === 'textarea'"
+                :label="column.label"
+                :name="column.field"
+                type="textarea"
+                filled
+                v-model="column.value"
+              >
+              </q-input>
+          </q-card-section>
+        </q-form>
         <q-btn label="Add" @click="add()"/>
       </q-card>
     </q-dialog>
@@ -51,6 +51,7 @@ export default {
   },
   props: {
     title: String,
+    API: String,
     columns: Array
   },
   data () {
@@ -64,15 +65,27 @@ export default {
       // 使用map做deep copy
       let columns = this.columns.map(e => {
         const column = { ...e }
-        column.type === 'image' && (column.value = JSON.stringify(column.value))
+        column.type === 'files' && (column.value = JSON.stringify(column.value))
         return column
       })
       return columns
     },
+    formatRow (columns) {
+      const rows = {}
+      for (let i in columns) {
+        if (columns[i].field !== 'id') {
+          rows[columns[i].field] = columns[i].value
+        }
+      }
+      return rows
+    },
     add () {
-      let row = this.formatColumn()
-      console.log(row)
-      // console.log(this.columns)
+      // let columns = this.formatColumn()
+      let rows = this.formatRow(this.columns)
+      console.log(rows)
+      this.$axios.post(this.API, rows).then(response => {
+        console.log(response)
+      })
     }
   }
 }

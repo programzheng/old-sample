@@ -10,7 +10,7 @@
       binary-state-sort
     >
       <template v-slot:top-right>
-        <Action title="add" :columns="columns"></Action>
+        <Action title="add" :columns="columns" :API="API"></Action>
         <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
           <template v-slot:append>
             <q-icon name="search" />
