@@ -4,7 +4,6 @@
       :label="title"
       :factory="factoryFn"
       @uploaded="fileUploaded"
-      accept=".jpg, image/*"
       multiple
       batch
     >
@@ -83,10 +82,11 @@ export default {
       })
     },
     fileUploaded ({ file, xhr }) {
-      let response = JSON.parse(xhr.response)
+      const response = JSON.parse(xhr.response)
       const files = [ ...response.Value ]
+      console.log(files)
       files.forEach(file => {
-        this.value.push(file.ID)
+        this.value.push(file.HashID)
       })
       console.log(this.value)
     }

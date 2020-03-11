@@ -84,7 +84,10 @@ export default {
       let rows = this.formatRow(this.columns)
       console.log(rows)
       this.$axios.post(this.API, rows).then(response => {
-        console.log(response)
+        if (response.status) {
+          this.$axios.toast.success('新增成功')
+          this.addDialog = false
+        }
       })
     }
   }

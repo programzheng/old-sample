@@ -1,7 +1,33 @@
 import { Notify } from 'quasar'
 
 class Toast {
-  constructor () {
+  info (message) {
+    Notify.setDefaults({
+      position: 'top',
+      timeout: 2500,
+      color: 'blue-10',
+      textColor: 'white',
+      actions: [{ icon: 'close', color: 'white' }]
+    })
+    Notify.create({
+      message: message }
+    )
+  }
+
+  success (message) {
+    Notify.setDefaults({
+      position: 'top',
+      timeout: 2500,
+      color: 'green-10',
+      textColor: 'white',
+      actions: [{ icon: 'close', color: 'white' }]
+    })
+    Notify.create({
+      message: message }
+    )
+  }
+
+  error (message) {
     Notify.setDefaults({
       position: 'top',
       timeout: 2500,
@@ -9,9 +35,6 @@ class Toast {
       textColor: 'white',
       actions: [{ icon: 'close', color: 'white' }]
     })
-  }
-
-  error (message) {
     Notify.create({
       message: message }
     )
