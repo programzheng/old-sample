@@ -42,7 +42,7 @@ export default {
   methods: {
     doSubmit () {
       const that = this
-      this.$axios.post('admin/login', {
+      this.$axios.post('admins/login', {
         account: that.account,
         password: that.password
       }).then((response) => {

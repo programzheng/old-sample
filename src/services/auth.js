@@ -10,7 +10,7 @@ class Auth {
   }
 
   admin () {
-    return this.api.post('admin/auth', {}).then((response) => {
+    return this.api.post('admins/auth', {}).then((response) => {
       if (response.data.code === 200) {
         this.store.commit('auth/admin', true)
         this.store.commit('admin/toolbarButtonStatus', true)
