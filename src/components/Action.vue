@@ -82,7 +82,6 @@ export default {
     add () {
       // let columns = this.formatColumn()
       let rows = this.formatRow(this.columns)
-      console.log(rows)
       this.$axios.post(this.API, rows).then(response => {
         if (response.status) {
           this.$axios.toast.success('新增成功')

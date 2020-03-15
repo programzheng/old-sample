@@ -86,7 +86,6 @@ export default {
       }).then(response => {
         this.data = response.data.value.list
       })
-      console.log(this.data)
       // handle sortBy
       if (sortBy) {
         this.data.sort((a, b) => {

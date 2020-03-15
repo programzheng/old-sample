@@ -16,9 +16,6 @@
 export default {
   created () {
     this.$q.dark.set(false)
-  },
-  mounted () {
-    console.log('I am FrontIndex')
   }
 }
 </script>

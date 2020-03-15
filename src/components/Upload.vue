@@ -66,9 +66,6 @@ export default {
     // 抓取預設api設定
     this.apiSetting = this.$axios.service.defaults
   },
-  mounted () {
-    console.log(this.value)
-  },
   methods: {
     factoryFn (file) {
       return new Promise((resolve, reject) => {
@@ -84,11 +81,9 @@ export default {
     fileUploaded ({ file, xhr }) {
       const response = JSON.parse(xhr.response)
       const files = [ ...response.Value ]
-      console.log(files)
       files.forEach(file => {
         this.value.push(file.HashID)
       })
-      console.log(this.value)
     }
   }
 }
