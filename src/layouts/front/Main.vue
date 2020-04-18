@@ -7,8 +7,10 @@
 </template>
 
 <script>
-
 export default {
+  created () {
+    this.$q.dark.set(false)
+  }
 }
 </script>
 

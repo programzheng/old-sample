@@ -2,8 +2,8 @@
   <q-page class="flex flex-center">
     <q-card>
       <q-card-section>
-        <div class="text-h6 text-center">FrontIndex</div>
-        <div class="text-h6 text-center">預留公告</div>
+        <div class="text-h6 text-center">Draw</div>
+        <div class="text-h6 text-center">繪畫</div>
       </q-card-section>
     </q-card>
   </q-page>
@@ -13,4 +13,5 @@
 </style>
 
 <script>
+
 </script>
