@@ -1,11 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <q-card>
-      <q-card-section>
-        <div class="text-h6 text-center">Draw</div>
-        <div class="text-h6 text-center">繪畫</div>
-      </q-card-section>
-    </q-card>
+    <canvas ref="board"></canvas>
   </q-page>
 </template>
 
@@ -13,6 +8,9 @@
 </style>
 
 <script>
+
+import { create } from 'simple-drawing-board'
+
 export default {
   sockets: {
     connect: function () {
@@ -23,7 +21,14 @@ export default {
     }
   },
   mounted () {
+    this.createSdb()
     this.$socket.emit('notice', '1234test')
+  },
+  methods: {
+    createSdb () {
+      const sdb = create(this.$refs.board)
+      console.log(sdb)
+    }
   }
 }
 </script>
